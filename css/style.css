@@ -1,0 +1,11 @@
+#wmap {
+    height: 200px;
+}
+#w-loading {
+    visibility: hidden;
+    display: inline;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}

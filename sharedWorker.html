@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shared Worker</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        var worker = new SharedWorker('js/worker/sharedWorker.js', 'test');
+        worker.port.onmessage = function ( event ) {
+            $('#display').text(event.data);
+        };
+
+        worker.port.postMessage('work1');
+    </script>
+</head>
+<body>
+
+<div id="display">0</div><div> 번째 접속자입니다.</div>
+</body>
+</html>

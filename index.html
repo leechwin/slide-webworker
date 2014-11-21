@@ -1,0 +1,533 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Concurrency Programming of WebApp</title>
+
+        <meta name="description" content="Web Worker">
+        <meta name="author" content="leechwin1@gmail.com">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <script src="js/jquery-2.1.0.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <script src="http://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section>
+                    <h2>Concurrency Programming of WebApp</h2>
+                    <br>
+                    <div>
+                        <a href="mailto:leechwin1@gmail.com">changhyun1.lee@samsung.com</a>
+                    </div>
+                    <br>
+                    <div>2014. 11</div>
+                </section>
+
+                <section>
+                    <h2>Overview</h2>
+                    <br>
+                    <ul>
+                        <li><span style="text-align: center;">Concurrency Programming</span>
+                        <li><span style="text-align: center;">Concurrency Programming of Web</span>
+                        <li><span style="text-align: center;">JavaScript Concurrency Model</span>
+                        <li><span style="text-align: center;">Web Worker</span>
+                        <li><span style="text-align: center;">TODO::</span>
+                    </ul>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Concurrency Programming</h2>
+                    </section>
+                    <section>
+                        <h2>Concurrency Programming</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">Concurrency is the notion of multiple things happening at the same time</span>
+                        </ul>
+                        <img src="images/thread.png">
+                    </section>
+                    <section>
+                        <h2>Models for Programming Concurrency</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">Sequential Programming</span>
+                            <li><span style="text-align: center;">Message-passing Concurrency</span>
+                            <li><span style="text-align: center;">Shared-state Concurrency</span>
+                                <ul><li>Mutexes, Semaphores, or Monitors</li></ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Concurrency in Java</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">Processes</span>
+                            <li><span style="text-align: center;">Threads</span>
+                            <li><span style="text-align: center;">Locks and thread synchronization</span>
+                        </ul>
+                        <img src="images/javaThread.png">
+                    </section>
+                    <section>
+                        <h2>How about the Web?</h2>
+                        <br>
+                        <img src="images/web.png">
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Concurrency Programming of Web</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">Server Side</span>
+                            <li><span style="text-align: center;">Client Side</span>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Server Side</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">Powerful Framework</span>
+                                <ul><li>Spring, Node.js, Etc</li></ul>
+                            <li><span style="text-align: center;">Use kind of operating system for development</span>
+                                <ul><li><span style="text-align: center;">Support for multi-core and multi-threading</span>
+                                    <ul>
+                                        <li>Java</li>
+                                        <li>JavaScript (Node.js cluster, multiplexing)</li>
+                                    </ul>
+                                </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Client Side (WebApp)</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center; color: red;">On the Browser</span>
+                            <li><span style="text-align: center;">Use kind of browser interface for development</span>
+                                <ul><li><span style="text-align: center;"><strike>Support for multi-core and multi-threading</strike></span>
+                                    <ul>
+                                        <li><span style="color: red;">Single Thread</span> concept of JavaScript running in browser</li>
+                                    </ul>
+                                </ul>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>JavaScript Concurrency Model</h2>
+                    </section>
+                    <section>
+                        <h2>UI Thread in Browser</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center; color: red;">Single Threaded</span><span> Event Loop/Queue Mechanism</span>
+                            <li><span style="text-align: center;">UI Thread is responsible for both <span style="color: red;">UI Updates</span> and <span style="color: red;">JavaScrtipt Execution</span></span>
+                        </ul>
+                        <img src="images/eventloop.png">
+                    </section>
+                    <section>
+                        <h2>When Clickj and Queue Status</h2>
+                        <br>
+                        <div>
+                            <div>http://www.slideshare.net/nzakas/high-performance-javascript-capitoljs-2011</div>
+                            <div>27page</div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2><p>UI pending while JavaScript is executing</p></h2>
+                        <h2><p class="fragment current-visible"><span style="color: red;">UI long pending</span> while <span style="color: red;">Heavy Weight JavaScript</span> is executing</p></h2>
+                    </section>
+                    <section>
+                        <h2 style="color: red;">Unresponsive UI</h2>
+                        <img src="images/IEError.png">
+                        <img src="images/SafariError.png">
+                        <img src="images/ChromeError.png">
+                        <img src="images/FireFoxError.png">
+                    </section>
+                    <section>
+                        <h2>Runaway Script Timer Limits</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;"><a href="http://support.microsoft.com/kb/175500">IE: 5 million statements</a></span>
+                            <li><span style="text-align: center;">Chrome: Unknown, Self crash control</span>
+                            <li><span style="text-align: center;"><a href="http://kb.mozillazine.org/Dom.max_script_run_time">Firefox: 10 seconds</a></span>
+                            <li><span style="text-align: center;"><a href="http://trac.webkit.org/changeset/14904#file4">Safari: 5 seconds</a></span>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Imitate Multi-Thread Programming</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">JavaScript Timers</span>
+                                <ul>
+                                    <li>var id = setTimeout( fn, delay );</li>
+                                    <li>var id = setInterval( fn, delay );</li>
+                                    <li>clearTimeout( id );</li>
+                                    <li>clearInterval( id );</li>
+                                </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Timer delay is not guaranteed</h2>
+                        <br>
+                        <pre><code data-trim>
+function fun1() {
+    console.log("fun1");
+    setTimeout(fun2, 0);
+    console.log("fun1-2");
+    fun3();
+}
+function fun2() {
+    console.log("fun2");
+}
+function fun3() {
+    console.log("fun3");
+}
+fun1();
+                        </code></pre>
+                        <div id="timerDiv"></div>
+                        <button onclick="timerBtn()">Demo</button>
+                    </section>
+                    <section>
+                        <h2>Timer delay is not guaranteed</h2>
+                        <br>
+                        <img src="images/timers.png">
+                    </section>
+                    <section>
+                        <h2>Multithreaded Programming to JavaScript is Impossible?</h2>
+                        <h2><p class="fragment current-visible"><span style="color: red;">Possible to WebWorker.</span></p></h2>
+                        <br>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="images/webworker.png">
+                    </section>
+                    <section>
+                        <h2>Web Worker</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">A web worker is a JavaScript running in the background, without affecting the performance of the page.</span>
+                        </ul>
+                        <img src="images/webworkerHistory.png">
+                    </section>
+                    <section>
+                        <h2>Web Worker</h2>
+                        <br>
+                        <!-- Reference: http://slides.html5rocks.com/#web-workers -->
+                        <div id="w-wrapper">
+                            <div id="wmap" class="gmap example">
+                                <img src="http://maps.google.com/maps/api/staticmap?center=13,13&zoom=3&size=680x200&sensor=false"/>
+                            </div>
+                            <div style="margin-top:5px">
+                                <button id="find-route-y">Find route with Workers</button>
+                                <button id="find-route-n">Find route without Workers</button>
+                                <p id="w-loading">Loading Route...</p>
+                            </div>
+                        </div>
+                        <script src="js/worker/points.js" defer></script>
+                        <script src="js/worker/annealing.js" defer></script>
+                        <script defer>
+                            (function() {
+                                var markersArray = [];
+                                var map = null;
+                                var useThreads = false;
+
+                                document.querySelector('#w-wrapper').addEventListener('click', function(event) {
+                                    if (!map) {
+                                        map = new google.maps.Map(document.querySelector('#wmap'), {
+                                            zoom: 3,
+                                            center: new google.maps.LatLng(13, 13),
+                                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                                        });
+                                        map.getDiv().style.border =  '1px solid #ccc';
+                                        drawPoints();
+                                    }
+
+                                    if (event.target.id == 'find-route-y') {
+                                        useThreads = true;
+                                        document.querySelector('#w-loading').style.visibility = 'visible';
+                                        test();
+                                    } else if (event.target.id == 'find-route-n'){
+                                        useThreads = false;
+                                        document.querySelector('#w-loading').style.visibility = 'visible';
+                                        // this setTimout is so that we see the 'loading' label
+                                        setTimeout(function() { test(); }, 10);
+                                    }
+                                }, false);
+
+                                function drawPath(path) {
+                                    var firstPoint = true;
+                                    var l = p1.length;
+                                    var scaleFactor = 5;
+                                    for (var i = 0; i < l - 1; ++i) {
+                                        var points = [
+                                            new google.maps.LatLng(p1[i].x / scaleFactor,
+                                                    p1[i].y / scaleFactor),
+                                            new google.maps.LatLng(p1[i + 1].x / scaleFactor,
+                                                    p1[i + 1].y / scaleFactor)
+                                        ];
+                                        var polyline = new google.maps.Polyline(
+                                                {path: points, strokeColor: '#ff0000', strokeWeight: 1});
+                                        markersArray.push(polyline);
+                                        polyline.setMap(map);
+                                    }
+                                }
+
+                                function drawPoints() {
+                                    var blueIcon = new google.maps.MarkerImage(
+                                            'images/point.png',
+                                            new google.maps.Size(3, 3), // size
+                                            new google.maps.Point(0, 0), // origin
+                                            new google.maps.Point(0, 0)); // anchor
+                                    for (var i = 0; i < p1.length; ++i) {
+                                        // Render in Gmap instead of canvas
+                                        var point = new google.maps.LatLng(p1[i].x / 5, p1[i].y / 5);
+                                        var marker = new google.maps.Marker({
+                                            position: point, icon: blueIcon, map: map});
+                                        markersArray.push(marker);
+                                    }
+                                }
+
+                                function deleteOverlays() {
+                                    if (markersArray) {
+                                        for (var i in markersArray) {
+                                            markersArray[i].setMap(null);
+                                        }
+                                        markersArray = [];
+                                    }
+                                }
+
+                                function test() {
+                                    var name = "Test 1";
+                                    var self = this;
+                                    deleteOverlays();
+                                    drawPoints();
+                                    setTimeout(function() {
+                                        var opts = {
+                                            points: p1,
+                                            t0: 1,
+                                            g: 0.99,
+                                            stepsPerT: 10
+                                        };
+                                        var callback = {
+                                            name: name,
+                                            newMin: function(p) {
+                                            },
+                                            draw: function(p) {
+                                                document.querySelector('#w-loading').style.visibility = 'hidden';
+                                                drawPath(p);
+                                            }
+                                        };
+                                        var a;
+                                        if (useThreads) {
+                                            var worker = new Worker('js/worker/workerMap.js')
+                                            worker.onmessage = function(event) {
+                                                var returnedData = JSON.parse(event.data);
+                                                var msg = returnedData[0];
+                                                var p = returnedData[1];
+                                                callback[msg](p);
+                                            };
+                                            worker.onerror = function(event) {
+                                                console.log(event);
+                                            };
+                                            worker.postMessage(JSON.stringify({
+                                                opts: opts,
+                                                width: 200,
+                                                height: 200
+                                            }));
+                                        } else {
+                                            var annealing = new Annealing();
+                                            var callback2 = {
+                                                onNewMin: function(p) {
+                                                    // postMessage('newmin')
+                                                },
+                                                onDone: function(p) {
+                                                    document.querySelector('#w-loading').style.visibility = 'hidden';
+                                                    drawPath(p);
+                                                }
+                                            };
+                                            annealing.init(opts, opts.width, opts.height, callback2);
+                                            annealing.go();
+                                        }
+                                    }, 10);
+                                }
+                            })();
+                        </script>
+                    </section>
+                    <section>
+                        <h2>Goods</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">UI 와 Business Logic 분리가능</span>
+                                <ul>
+                                    <li>UI 는 항상 non-blocking 되어야 하는 환경</li>
+                                    <li>Heavy Weight Scripts (복잡한 산술계산)</li>
+                                    <li>AJAX 의 결과 값이 크고 이에 대한 parsing / filter 에 대한 workload 가 큰경우</li>
+                                </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Bads</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">Limited Access</span>
+                                <ul>
+                                    <li>window, document, console, parent object</li>
+                                    <li>Page 의 script, functions, global variable 에 접근 불가</li>
+                                    <li>공유 자원이 없기 때문에 thread 간 race condition이 발생하지 않음</li>
+                                    <li>Shared Worker 는 Worker 내의 전역변수 공유가능</li>
+                                </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Kinds of Worker</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">DedicatedWorker</span>
+                                <ul>
+                                    <li>하나의 Worker 가 하나의 Thread 를 가지는 Worker</li>
+                                </ul>
+                            <li><span style="text-align: center;">SharedWorker</span>
+                                <ul>
+                                    <li>여러 개의 Worker 가 하나의 프로세서를 공유하는 Worker</li>
+                                </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>DedicatedWorker Tutorial</h2>
+                        <br>
+                        <pre><code data-trim>
+                            // index.html
+                            <script>
+                                var worker = new Worker( 'worker.js' );
+                                worker.onmessage = function ( event ) {
+                                    // TODO::Update UI Logic
+                                };
+                                worker.postMessage( values );
+
+                                function stop() {
+                                    worker.terminate();
+                                }
+                            </script>
+                        </code></pre>
+                        <pre><code data-trim>
+                            // worker.js
+                            // importScripts( ‘library1.js’, ‘library2.js’);
+                            onmessage = function ( event ) {
+                            // TODO:: Bussiness Logic
+                            postMessage( data );
+                            }
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>SharedWorker Tutorial</h2>
+                        <br>
+                        <pre><code data-trim>
+// index.html
+<script>
+    var worker = new SharedWorker('sharedWorker.js', 'workerName');
+    worker.port.onmessage = function ( event ) {
+        console.log( event.data );
+    };
+     worker.port.postMessage( values );
+</script>
+                        </code></pre>
+                        <pre><code data-trim>
+// sharedWorker.js
+var globalConnections = 0;
+onconnect = function ( event ) {
+    var port = event.ports[0];
+    globalConnections++;
+    port.onmessage = function ( event ) {
+        port. postMessage( globalConnections );
+        // port.close();
+    }
+}
+                </code></pre>
+                        <button onclick="window.open('sharedWorker.html',  '_blank', 'height=200,width=200');">Demo</button>
+                    </section>
+                    <section>
+                        <h2>Debugging SharedWorker</h2>
+                        <br>
+                        <ul>
+                            <li><span style="text-align: center;">Chrome Dev Tools</span>
+                                <ul>
+                                    <li>chrome://inspect</li>
+                                </ul>
+                        </ul>
+                        <img src="images/inspect.png">
+                    </section>
+                </section>
+
+
+                <section>
+                    <h1>Thank you!</h1>
+                    <br>
+                        <span style="text-align: center;"><a href="mailto:leechwin1@gmail.com">leechwin1@gmail.com</a></span>
+                </section>
+            </div>
+
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+        <script>
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+        </script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
