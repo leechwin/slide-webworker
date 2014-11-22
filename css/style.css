@@ -9,3 +9,12 @@
     padding: 5px;
     border-radius: 5px;
 }
+
+.myspan {
+    text-align: center;
+}
+
+.myspan-red {
+    text-align: center;
+    color: red;
+}

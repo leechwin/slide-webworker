@@ -53,11 +53,11 @@
                     <h2>Overview</h2>
                     <br>
                     <ul>
-                        <li><span style="text-align: center;">Concurrency Programming</span>
-                        <li><span style="text-align: center;">Concurrency Programming of Web</span>
-                        <li><span style="text-align: center;">JavaScript Concurrency Model</span>
-                        <li><span style="text-align: center;">Web Worker</span>
-                        <li><span style="text-align: center;">TODO::</span>
+                        <li><span class='myspan'>Concurrency Programming</span>
+                        <li><span class='myspan'>Concurrency Programming of Web</span>
+                        <li><span class='myspan'>JavaScript Concurrency Model</span>
+                        <li><span class='myspan'>Web Worker</span>
+                        <li><span class='myspan'>TODO::</span>
                     </ul>
                 </section>
 
@@ -69,7 +69,7 @@
                         <h2>Concurrency Programming</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">Concurrency is the notion of multiple things happening at the same time</span>
+                            <li><span class='myspan'>Concurrency is the notion of multiple things happening at the same time</span>
                         </ul>
                         <img src="images/thread.png">
                     </section>
@@ -77,9 +77,9 @@
                         <h2>Models for Programming Concurrency</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">Sequential Programming</span>
-                            <li><span style="text-align: center;">Message-passing Concurrency</span>
-                            <li><span style="text-align: center;">Shared-state Concurrency</span>
+                            <li><span class='myspan'>Sequential Programming</span>
+                            <li><span class='myspan'>Message-passing Concurrency</span>
+                            <li><span class='myspan'>Shared-state Concurrency</span>
                                 <ul><li>Mutexes, Semaphores, or Monitors</li></ul>
                         </ul>
                     </section>
@@ -87,9 +87,9 @@
                         <h2>Concurrency in Java</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">Processes</span>
-                            <li><span style="text-align: center;">Threads</span>
-                            <li><span style="text-align: center;">Locks and thread synchronization</span>
+                            <li><span class='myspan'>Processes</span>
+                            <li><span class='myspan'>Threads</span>
+                            <li><span class='myspan'>Locks and thread synchronization</span>
                         </ul>
                         <img src="images/javaThread.png">
                     </section>
@@ -105,18 +105,18 @@
                         <h2>Concurrency Programming of Web</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">Server Side</span>
-                            <li><span style="text-align: center;">Client Side</span>
+                            <li><span class='myspan'>Server Side</span>
+                            <li><span class='myspan'>Client Side</span>
                         </ul>
                     </section>
                     <section>
                         <h2>Server Side</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">Powerful Framework</span>
+                            <li><span class='myspan'>Powerful Framework</span>
                                 <ul><li>Spring, Node.js, Etc</li></ul>
-                            <li><span style="text-align: center;">Use kind of operating system for development</span>
-                                <ul><li><span style="text-align: center;">Support for multi-core and multi-threading</span>
+                            <li><span class='myspan'>Use kind of operating system for development</span>
+                                <ul><li><span class='myspan'>Support for multi-core and multi-threading</span>
                                     <ul>
                                         <li>Java</li>
                                         <li>JavaScript (Node.js cluster, multiplexing)</li>
@@ -128,11 +128,11 @@
                         <h2>Client Side (WebApp)</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center; color: red;">On the Browser</span>
-                            <li><span style="text-align: center;">Use kind of browser interface for development</span>
-                                <ul><li><span style="text-align: center;"><strike>Support for multi-core and multi-threading</strike></span>
+                            <li><span class='myspan-red'>On the Browser</span>
+                            <li><span class='myspan'>Use kind of browser interface for development</span>
+                                <ul><li><span class='myspan'><strike>Support for multi-core and multi-threading</strike></span>
                                     <ul>
-                                        <li><span style="color: red;">Single Thread</span> concept of JavaScript running in browser</li>
+                                        <li><span class='myspan-red'>Single Thread</span> concept of JavaScript running in browser</li>
                                     </ul>
                                 </ul>
                         </ul>
@@ -147,22 +147,44 @@
                         <h2>UI Thread in Browser</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center; color: red;">Single Threaded</span><span> Event Loop/Queue Mechanism</span>
-                            <li><span style="text-align: center;">UI Thread is responsible for both <span style="color: red;">UI Updates</span> and <span style="color: red;">JavaScrtipt Execution</span></span>
+                            <li><span class='myspan-red'>Single Threaded</span><span> Event Loop/Queue Mechanism</span>
+                            <li><span class='myspan'>UI Thread is responsible for both <span class='myspan-red'>UI Updates</span> and <span class='myspan-red'>JavaScrtipt Execution</span></span>
                         </ul>
                         <img src="images/eventloop.png">
                     </section>
-                    <section>
-                        <h2>When Clickj and Queue Status</h2>
+                    <section data-transition="none">
+                        <h2>When Button Click Event</h2>
                         <br>
-                        <div>
-                            <div>http://www.slideshare.net/nzakas/high-performance-javascript-capitoljs-2011</div>
-                            <div>27page</div>
-                        </div>
+                        <img src="images/ui1.png">
+                    </section>
+                    <section data-transition="none">
+                        <h2>When Button Click Event</h2>
+                        <br>
+                        <img src="images/ui2.png">
+                    </section>
+                    <section data-transition="none">
+                        <h2>When Button Click Event</h2>
+                        <br>
+                        <img src="images/ui3.png">
+                    </section>
+                    <section data-transition="none">
+                        <h2>When Button Click Event</h2>
+                        <br>
+                        <img src="images/ui4.png">
+                    </section>
+                    <section data-transition="none">
+                        <h2>When Button Click Event</h2>
+                        <br>
+                        <img src="images/ui5.png">
+                    </section>
+                    <section data-transition="none">
+                        <h2>When Button Click Event</h2>
+                        <br>
+                        <img src="images/ui6.png">
                     </section>
                     <section>
                         <h2><p>UI pending while JavaScript is executing</p></h2>
-                        <h2><p class="fragment current-visible"><span style="color: red;">UI long pending</span> while <span style="color: red;">Heavy Weight JavaScript</span> is executing</p></h2>
+                        <h2><p class="fragment current-visible"><span class='myspan-red'>UI long pending</span> while <span class='myspan-red'>Heavy Weight JavaScript</span> is executing</p></h2>
                     </section>
                     <section>
                         <h2 style="color: red;">Unresponsive UI</h2>
@@ -175,17 +197,17 @@
                         <h2>Runaway Script Timer Limits</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;"><a href="http://support.microsoft.com/kb/175500">IE: 5 million statements</a></span>
-                            <li><span style="text-align: center;">Chrome: Unknown, Self crash control</span>
-                            <li><span style="text-align: center;"><a href="http://kb.mozillazine.org/Dom.max_script_run_time">Firefox: 10 seconds</a></span>
-                            <li><span style="text-align: center;"><a href="http://trac.webkit.org/changeset/14904#file4">Safari: 5 seconds</a></span>
+                            <li><span class='myspan'><a href="http://support.microsoft.com/kb/175500">IE: 5 million statements</a></span>
+                            <li><span class='myspan'>Chrome: Unknown, Self crash control</span>
+                            <li><span class='myspan'><a href="http://kb.mozillazine.org/Dom.max_script_run_time">Firefox: 10 seconds</a></span>
+                            <li><span class='myspan'><a href="http://trac.webkit.org/changeset/14904#file4">Safari: 5 seconds</a></span>
                         </ul>
                     </section>
                     <section>
                         <h2>Imitate Multi-Thread Programming</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">JavaScript Timers</span>
+                            <li><span class='myspan'>JavaScript Timers</span>
                                 <ul>
                                     <li>var id = setTimeout( fn, delay );</li>
                                     <li>var id = setInterval( fn, delay );</li>
@@ -222,7 +244,7 @@ fun1();
                     </section>
                     <section>
                         <h2>Multithreaded Programming to JavaScript is Impossible?</h2>
-                        <h2><p class="fragment current-visible"><span style="color: red;">Possible to WebWorker.</span></p></h2>
+                        <h2><p class="fragment current-visible"><span class='myspan-red'>Possible to WebWorker.</span></p></h2>
                         <br>
                     </section>
                 </section>
@@ -235,7 +257,7 @@ fun1();
                         <h2>Web Worker</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">A web worker is a JavaScript running in the background, without affecting the performance of the page.</span>
+                            <li><span class='myspan'>A web worker is a JavaScript running in the background, without affecting the performance of the page.</span>
                         </ul>
                         <img src="images/webworkerHistory.png">
                     </section>
@@ -248,8 +270,8 @@ fun1();
                                 <img src="http://maps.google.com/maps/api/staticmap?center=13,13&zoom=3&size=680x200&sensor=false"/>
                             </div>
                             <div style="margin-top:5px">
-                                <button id="find-route-y">Find route with Workers</button>
                                 <button id="find-route-n">Find route without Workers</button>
+                                <button id="find-route-y">Find route with Workers</button>
                                 <p id="w-loading">Loading Route...</p>
                             </div>
                         </div>
@@ -387,7 +409,7 @@ fun1();
                         <h2>Goods</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">UI 와 Business Logic 분리가능</span>
+                            <li><span class='myspan'>UI 와 Business Logic 분리가능</span>
                                 <ul>
                                     <li>UI 는 항상 non-blocking 되어야 하는 환경</li>
                                     <li>Heavy Weight Scripts (복잡한 산술계산)</li>
@@ -399,7 +421,7 @@ fun1();
                         <h2>Bads</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">Limited Access</span>
+                            <li><span class='myspan'>Limited Access</span>
                                 <ul>
                                     <li>window, document, console, parent object</li>
                                     <li>Page 의 script, functions, global variable 에 접근 불가</li>
@@ -412,11 +434,11 @@ fun1();
                         <h2>Kinds of Worker</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">DedicatedWorker</span>
+                            <li><span class='myspan'>DedicatedWorker</span>
                                 <ul>
                                     <li>하나의 Worker 가 하나의 Thread 를 가지는 Worker</li>
                                 </ul>
-                            <li><span style="text-align: center;">SharedWorker</span>
+                            <li><span class='myspan'>SharedWorker</span>
                                 <ul>
                                     <li>여러 개의 Worker 가 하나의 프로세서를 공유하는 Worker</li>
                                 </ul>
@@ -426,26 +448,26 @@ fun1();
                         <h2>DedicatedWorker Tutorial</h2>
                         <br>
                         <pre><code data-trim>
-                            // index.html
-                            <script>
-                                var worker = new Worker( 'worker.js' );
-                                worker.onmessage = function ( event ) {
-                                    // TODO::Update UI Logic
-                                };
-                                worker.postMessage( values );
+// index.html
+<script>
+var worker = new Worker( 'worker.js' );
+worker.onmessage = function ( event ) {
+    // TODO::Update UI Logic
+};
+worker.postMessage( values );
 
-                                function stop() {
-                                    worker.terminate();
-                                }
-                            </script>
+function stop() {
+    worker.terminate();
+}
+</script>
                         </code></pre>
                         <pre><code data-trim>
-                            // worker.js
-                            // importScripts( ‘library1.js’, ‘library2.js’);
-                            onmessage = function ( event ) {
-                            // TODO:: Bussiness Logic
-                            postMessage( data );
-                            }
+// worker.js
+// importScripts( ‘library1.js’, ‘library2.js’);
+onmessage = function ( event ) {
+// TODO:: Bussiness Logic
+postMessage( data );
+}
                         </code></pre>
                     </section>
                     <section>
@@ -479,7 +501,7 @@ onconnect = function ( event ) {
                         <h2>Debugging SharedWorker</h2>
                         <br>
                         <ul>
-                            <li><span style="text-align: center;">Chrome Dev Tools</span>
+                            <li><span class='myspan'>Chrome Dev Tools</span>
                                 <ul>
                                     <li>chrome://inspect</li>
                                 </ul>
@@ -487,22 +509,34 @@ onconnect = function ( event ) {
                         <img src="images/inspect.png">
                     </section>
                     <section>
-                        <h2>WebWorker / SharedWorker Browser Support</h2>
+                        <h2>WebWorker Browser Support</h2>
                         <img src="images/webWorkerSupport.png">
+                    </section>
+                    <section>
+                        <h2>SharedWorker Browser Support</h2>
                         <img src="images/sharedWorkerSupport.png">
+                    </section>
+                    <section>
+                        <h2>Tizen Browser Support</h2>
+                        <img src="images/tizenSupport.png">
                     </section>
                 </section>
 
-
                 <section>
-                    <h1>Thank you!</h1>
-                    <br>
-                        <span style="text-align: center;"><a href="mailto:leechwin1@gmail.com">leechwin1@gmail.com</a></span>
+                    <section>
+                        <h1>Q&A</h1>
+                        <br>
+                        <img src="images/good.png">
+                    </section>
+                    <section>
+                        <h1>Thank you!</h1>
+                        <br>
+                            <span class='myspan'><a href="mailto:leechwin1@gmail.com">leechwin1@gmail.com</a></span>
+                    </section>
                 </section>
+
             </div>
-
         </div>
-
 
         <script src="lib/js/head.min.js"></script>
         <script src="js/reveal.min.js"></script>
@@ -534,6 +568,5 @@ onconnect = function ( event ) {
             });
         </script>
         <script src="js/main.js"></script>
-        <nav><a href=comms.html>← 9 Communication</a> — <a href=index.html>Table of Contents</a> — <a href=webstorage.html>11 Web storage →</a></nav><ol class=toc><li id=toc-workers><a href=workers.html#workers>10 Web workers</a><ol><li><a href=workers.html#introduction-15>10.1 Introduction</a><ol><li><a href=workers.html#scope-2>10.1.1 Scope</a><li><a href=workers.html#examples-6>10.1.2 Examples</a><ol><li><a href=workers.html#a-background-number-crunching-worker>10.1.2.1 A background number-crunching worker</a><li><a href=workers.html#worker-used-for-background-i/o>10.1.2.2 Worker used for background I/O</a><li><a href=workers.html#shared-workers-introduction>10.1.2.3 Shared workers introduction</a><li><a href=workers.html#shared-state-using-a-shared-worker>10.1.2.4 Shared state using a shared worker</a><li><a href=workers.html#delegation>10.1.2.5 Delegation</a></ol><li><a href=workers.html#tutorials>10.1.3 Tutorials</a><ol><li><a href=workers.html#creating-a-dedicated-worker>10.1.3.1 Creating a dedicated worker</a><li><a href=workers.html#communicating-with-a-dedicated-worker>10.1.3.2 Communicating with a dedicated worker</a><li><a href=workers.html#shared-workers>10.1.3.3 Shared workers</a></ol></ol><li><a href=workers.html#infrastructure-2>10.2 Infrastructure</a><ol><li><a href=workers.html#the-global-scope>10.2.1 The global scope</a><ol><li><a href=workers.html#the-workerglobalscope-common-interface>10.2.1.1 The <code>WorkerGlobalScope</code> common interface</a><li><a href=workers.html#dedicated-workers-and-the-dedicatedworkerglobalscope-interface>10.2.1.2 Dedicated workers and the <code>DedicatedWorkerGlobalScope</code> interface</a><li><a href=workers.html#shared-workers-and-the-sharedworkerglobalscope-interface>10.2.1.3 Shared workers and the <code>SharedWorkerGlobalScope</code> interface</a></ol><li><a href=workers.html#worker-event-loop>10.2.2 The event loop</a><li><a href="workers.html#the-worker's-lifetime">10.2.3 The worker's lifetime</a><li><a href=workers.html#processing-model-11>10.2.4 Processing model</a><li><a href=workers.html#runtime-script-errors-2>10.2.5 Runtime script errors</a><li><a href=workers.html#creating-workers>10.2.6 Creating workers</a><ol><li><a href=workers.html#the-abstractworker-abstract-interface>10.2.6.1 The <code>AbstractWorker</code> abstract interface</a><li><a href=workers.html#script-settings-for-workers>10.2.6.2 Script settings for workers</a><li><a href=workers.html#dedicated-workers-and-the-worker-interface>10.2.6.3 Dedicated workers and the <code>Worker</code> interface</a><li><a href=workers.html#shared-workers-and-the-sharedworker-interface>10.2.6.4 Shared workers and the <code>SharedWorker</code> interface</a></ol></ol><li><a href=workers.html#apis-available-to-workers>10.3 APIs available to workers</a><ol><li><a href=workers.html#importing-scripts-and-libraries>10.3.1 Importing scripts and libraries</a><li><a href=workers.html#the-workernavigator-object>10.3.2 The <code>WorkerNavigator</code> object</a><li><a href=workers.html#worker-locations>10.3.3 Worker locations</a></ol></ol></ol><h2 id=workers>10 Web workers</h2><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> <span class="chrome yes"><span>Chrome</span> <span>4+</span></span><span class="ie yes"><span>IE</span> <span>10+</span></span><span class="firefox yes"><span>Firefox</span> <span>3.5+</span></span><span class="and_chr yes"><span>Chrome for Android</span> <span>38+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>5.0-5.1+</span></span><span class="android yes"><span>Android Browser</span> <span>4.4+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>9.9+</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>4+</span></span><span class="opera yes"><span>Opera</span> <span>10.6+</span></span><span class="ie_mob yes"><span>IE Mobile</span> <span>10+</span></span><span class="and_ff yes"><span>Firefox for Android</span> <span>32+</span></span><p class=caniuse>Source: <a href="http://caniuse.com/#feat=webworkers">caniuse.com</a></div>
     </body>
 </html>

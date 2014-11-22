@@ -15,7 +15,6 @@ onmessage = function(event) {
         }
     };
     var passedData = JSON.parse(event.data);
-    annealing.init(passedData.opts, passedData.width,
-        passedData.height, callback)
+    annealing.init(passedData.opts, passedData.width,passedData.height, callback);
     annealing.go();
 }
