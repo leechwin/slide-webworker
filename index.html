@@ -256,12 +256,18 @@ fun1();
                         <h2>Web Worker</h2>
                         <br>
                         <ul>
-                            <li><span class='myspan'>A web worker is a JavaScript running in the background, without affecting the performance of the page.</span>
+                            <li><span class='myspan'>A web worker is a <span class='myspan-red'>JavaScript running in the background,</span> without affecting the performance of the page.</span>
+                            <li><span class='myspan'>Javascript executed on a separate thread ( background and not the UI thread)</span>
                         </ul>
                         <img src="images/webworkerHistory.png">
                     </section>
                     <section>
                         <h2>Web Worker</h2>
+                        <br>
+                        <img src="images/webwokerThread.png">
+                    </section>
+                    <section>
+                        <h2>Web Worker Demo</h2>
                         <br>
                         <!-- Reference: http://slides.html5rocks.com/#web-workers -->
                         <div id="w-wrapper">
@@ -417,16 +423,38 @@ fun1();
                         </ul>
                     </section>
                     <section>
-                        <h2>Bads</h2>
+                        <h2>Limited Access</h2>
                         <br>
                         <ul>
-                            <li><span class='myspan'>Limited Access</span>
+                            <li><span class='myspan'>window, document, console, parent object</span>
+                            <li><span class='myspan'>공유 자원이 없기 때문에 thread 간 race condition이 발생하지 않음</span>
+                            <li><span class='myspan'>Shared Worker 는 Worker 내의 전역변수 공유가능</span>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Communicate with Workers</h2>
+                        <br>
+                        <ul>
+                            <li><span class='myspan'>MessageEvent</span>
                                 <ul>
-                                    <li>window, document, console, parent object</li>
-                                    <li>Page 의 script, functions, global variable 에 접근 불가</li>
-                                    <li>공유 자원이 없기 때문에 thread 간 race condition이 발생하지 않음</li>
-                                    <li>Shared Worker 는 Worker 내의 전역변수 공유가능</li>
+                                    <li>postMessage API</li>
+                                    <li>Supports passing JSON structures</li>
+                                    <li>The parent and worker threads have their own separate space</li>
                                 </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Terminating Workers</h2>
+                        <br>
+                        <ul>
+                            <li>Workers are resource-intensive, They are OS-level threads</li>
+                            <li>Workers can terminate</li>
+                            <ul>
+                                <li>Workers can terminate themselves</li>
+                                <ul><li>self.close();</li></ul>
+                                <li>Parent thread can terminate a worker</li>
+                                <ul><li>worker.terminate();</li></ul>
+                            </ul>
                         </ul>
                     </section>
                     <section>
@@ -439,7 +467,8 @@ fun1();
                                 </ul>
                             <li><span class='myspan'>SharedWorker</span>
                                 <ul>
-                                    <li>여러 개의 Worker 가 하나의 프로세서를 공유하는 Worker</li>
+                                    <li>하나의 Worker 를 공유하고 통신할 수 있는 Worker</li>
+                                    <li>All pages or scripts on the same origin can communicate with a shared worker</li>
                                 </ul>
                         </ul>
                     </section>
@@ -522,6 +551,18 @@ onconnect = function ( event ) {
                 </section>
 
                 <section>
+                    <section>
+                        <h1>References</h1>
+                        <br>
+                        <ul>
+                            <li><a href="https://html.spec.whatwg.org/multipage/workers.html">Web Worker Spec</a>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Performance/Using_web_workers">Mozila Developer NetWork - Using web workers</a>
+                            <li><a href="http://ejohn.org/blog/how-javascript-timers-work/">John Resig - How JavaScript Timers Work</a>
+                            <li><a href="http://www.slideshare.net/nzakas/high-performance-javascript-capitoljs-2011">CapitolJS 2011 - High Performance JavaScript</a>
+
+                        </ul>
+
+                    </section>
                     <section>
                         <h1>Q&A</h1>
                         <br>
