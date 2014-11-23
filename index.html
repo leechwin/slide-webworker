@@ -503,7 +503,7 @@ function stop() {
 // worker.js
 // importScripts( ‘library1.js’, ‘library2.js’);
 onmessage = function ( event ) {
-// TODO:: Bussiness Logic
+    // TODO:: Bussiness Logic
 postMessage( data );
 }
                         </code></pre>
@@ -518,7 +518,7 @@ postMessage( data );
     worker.port.onmessage = function ( event ) {
         console.log( event.data );
     };
-     worker.port.postMessage( values );
+    worker.port.postMessage( values );
 </script>
                         </code></pre>
                         <pre><code data-trim>
