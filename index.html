@@ -243,6 +243,8 @@ function fun3() {
 }
 fun1();
                         </code></pre>
+                        <span class='myspan'>Expect Result: fun1, fun2, fun1-2, fun3 ?</span>
+                        <br>
                         <div id="timerDiv"></div>
                         <button onclick="timerBtn()">Demo</button>
                     </section>
@@ -421,7 +423,7 @@ fun1();
                         </script>
                     </section>
                     <section>
-                        <h2>Goods</h2>
+                        <h2>Good</h2>
                         <br>
                         <ul>
                             <li><span class='myspan'>UI 와 Business Logic 분리가능</span>
@@ -436,8 +438,8 @@ fun1();
                         <h2>Limited Access</h2>
                         <br>
                         <ul>
-                            <li><span class='myspan'>window, document, console, parent object</span>
-                            <li><span class='myspan'>공유 자원이 없기 때문에 thread 간 race condition이 발생하지 않음</span>
+                            <li><span class='myspan'>window, document, console, parent object 에 접근 불가</span>
+                            <ul><li><span class='myspan'>공유 자원이 없기 때문에 thread 간 race condition이 발생하지 않음</span></ul>
                             <li><span class='myspan'>Shared Worker 는 Worker 내의 전역변수 공유가능</span>
                         </ul>
                     </section>
