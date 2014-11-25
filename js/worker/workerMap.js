@@ -11,6 +11,12 @@ onmessage = function(event) {
         },
         onDone: function(p) {
             // postMessage('draw')
+
+            // dumy function for long time excution
+            for ( var i = 0; i < 300000000; i++) {
+                var a = a * i;
+            }
+
             postMessage(JSON.stringify(["draw", p]));
         }
     };
